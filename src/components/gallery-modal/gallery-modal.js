@@ -1,0 +1,174 @@
+import React from 'react';
+
+import GalleryService from '../../service';
+import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator';
+import Input from '../input';
+import { generateId, transformDate } from '../../utils';
+import './gallery-modal.css';
+
+export default class GalleryModal extends React.Component {
+  galleryService = new GalleryService();
+
+  state = {
+    loading: true,
+    error: false,
+    url: '',
+    comments: [],
+    name: '',
+    text: '',
+    nameIsValid: true,
+    textIsValid: true,
+  };
+
+  componentDidMount() {
+    this.galleryService
+      .getImage(this.props.modalIdx)
+      .then(({ url, comments }) => {
+        this.setState({
+          url,
+          comments,
+          loading: false,
+        });
+      })
+      .catch(() => {
+        this.setState({
+          error: true,
+          loading: false,
+        });
+      });
+  }
+
+  validateForm() {
+    const { name, text } = this.state;
+    const nameIsEmpty = name.length === 0;
+    const textIsEmpty = text.length === 0;
+
+    this.setState({
+      nameIsValid: !nameIsEmpty,
+      textIsValid: !textIsEmpty,
+    });
+
+    if (nameIsEmpty || textIsEmpty) {
+      return false;
+    }
+
+    return true;
+  }
+
+  submitForm = (evt) => {
+    evt.preventDefault();
+
+    const formIsValid = this.validateForm();
+    if (!formIsValid) {
+      return ;
+    }
+
+    const { text, name } = this.state;
+    this.galleryService
+      .postComment(this.props.modalIdx, {name, comment: text})
+      .then(() => {
+        const { comments } = this.state;
+        const newComment = {
+          text,
+          id: generateId(),
+          date: Date.now(),
+        };
+
+        this.setState({
+          name: '',
+          text: '',
+          nameIsValid: true,
+          textIsValid: true,
+          comments: comments.concat(newComment),
+        });
+      });
+  };
+
+  changeInput = (evt) => {
+    this.setState({ [evt.target.name]: evt.target.value });
+  };
+
+  renderComments = () => {
+    const { comments } = this.state;
+
+    if (comments.length === 0) {
+      return (
+        <div className="gallery-modal__comments-dummy">
+          Здесь пока никто не написал... :(
+          <br />
+          Оставьте первый комментарий!
+        </div>
+      );
+    }
+
+    const renderedComments = comments.map(comment => {
+      const { id, date, text } = comment;
+      return (
+        <div key={id} className="gallery-modal__comment">
+          <time className="gallery-modal__comment-date">{transformDate(date)}</time>
+          <p className="gallery-modal__comment-text">{text}</p>
+        </div>
+      );
+    });
+
+    return renderedComments;
+  };
+
+  renderModalContent = () => {
+    if (this.state.loading) {
+      return <Spinner />;
+    }
+
+    if (this.state.error) {
+      return <ErrorIndicator />;
+    }
+
+    const { closeModal } = this.props;
+    const { url, name, text, nameIsValid, textIsValid } = this.state;
+    const comments = this.renderComments();
+
+    return (
+      <>
+        <button className="gallery-modal__close" onClick={closeModal}/>
+        <div className="gallery-modal__image-container">
+          <img className="gallery-modal__image" src={url} alt="" />
+        </div>
+        <div className="gallery-modal__comments">{comments}</div>
+        <form className="gallery-modal__form" onSubmit={this.submitForm}>
+          <div className="gallery-modal__input">
+            <Input name="name"
+              value={name}
+              onChange={this.changeInput}
+              placeholder="Ваше имя"
+              errorText="Введите ваше имя"
+              isValid={nameIsValid} />
+          </div>
+          <div className="gallery-modal__input">
+            <Input name="text"
+              value={text}
+              onChange={this.changeInput}
+              placeholder="Ваш комментарий"
+              errorText="Введите комментарий"
+              isValid={textIsValid} />
+          </div>
+          <button className="gallery-modal__button">Оставить комментарий</button>
+        </form>
+      </>
+    );
+  };
+
+  render() {
+    const { closeModal } = this.props;
+    const modalContent = this.renderModalContent();
+
+    return (
+      <div className="gallery-modal">
+        <div className="gallery-modal__paranja" onClick={closeModal}/>
+        <div className="gallery-modal__content">
+          { modalContent }
+        </div>
+      </div>
+    );
+  }
+}

@@ -1,0 +1,55 @@
+.app {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 768px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 15px 20px;
+}
+
+.app__header {
+  flex: 0 0 auto;
+
+  margin-bottom: 30px;
+
+  text-align: center;
+}
+
+.app__title {
+  margin: 0;
+
+  text-transform: uppercase;
+
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 36px;
+  font-weight: normal;
+}
+
+.app__main {
+  flex: 1 0 auto;
+
+  margin-bottom: 30px;
+}
+
+.app__footer {
+  flex: 0 0 auto;
+
+  text-align: center;
+
+  border-top: 1px solid #ccc;
+}
+
+.app__copyright {
+  display: block;
+
+  margin-top: 21px;
+
+  color: #ccc;
+
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+}
