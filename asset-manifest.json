@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/avito-safedeal/static/css/main.0e5639e4.chunk.css",
+    "main.js": "/avito-safedeal/static/js/main.29be2cfa.chunk.js",
+    "main.js.map": "/avito-safedeal/static/js/main.29be2cfa.chunk.js.map",
+    "runtime-main.js": "/avito-safedeal/static/js/runtime-main.b1efa1cd.js",
+    "runtime-main.js.map": "/avito-safedeal/static/js/runtime-main.b1efa1cd.js.map",
+    "static/js/2.72cfc7cd.chunk.js": "/avito-safedeal/static/js/2.72cfc7cd.chunk.js",
+    "static/js/2.72cfc7cd.chunk.js.map": "/avito-safedeal/static/js/2.72cfc7cd.chunk.js.map",
+    "index.html": "/avito-safedeal/index.html",
+    "precache-manifest.0fffe2d8ec5f65e490f1ae618233779e.js": "/avito-safedeal/precache-manifest.0fffe2d8ec5f65e490f1ae618233779e.js",
+    "service-worker.js": "/avito-safedeal/service-worker.js",
+    "static/css/main.0e5639e4.chunk.css.map": "/avito-safedeal/static/css/main.0e5639e4.chunk.css.map",
+    "static/js/2.72cfc7cd.chunk.js.LICENSE": "/avito-safedeal/static/js/2.72cfc7cd.chunk.js.LICENSE",
+    "static/media/style.css": "/avito-safedeal/static/media/RobotoCondensed-Regular.52ee8b59.ttf",
+    "static/media/error.svg": "/avito-safedeal/static/media/error.887a5f02.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b1efa1cd.js",
+    "static/js/2.72cfc7cd.chunk.js",
+    "static/css/main.0e5639e4.chunk.css",
+    "static/js/main.29be2cfa.chunk.js"
+  ]
+}
