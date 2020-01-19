@@ -13,7 +13,7 @@ const Input = ({name, value, onChange, placeholder, errorText = 'Заполни�
 
   return (
     <div className={cls}>
-      <input className="input__field" type="text" name={name} value={value} onChange={onChange} />
+      <input className="input__field" type="text" name={name} value={value} onChange={onChange}/>
       <div className="input__placeholder">{placeholderText}</div>
     </div>
   );

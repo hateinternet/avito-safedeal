@@ -1,4 +1,5 @@
 import React from 'react';
+import FocusLock from "react-focus-lock";
 
 import GalleryService from '../../service';
 import Spinner from '../spinner';
@@ -9,6 +10,7 @@ import './gallery-modal.css';
 
 export default class GalleryModal extends React.Component {
   galleryService = new GalleryService();
+  buttonRef = React.createRef();
 
   state = {
     loading: true,
@@ -37,7 +39,20 @@ export default class GalleryModal extends React.Component {
           loading: false,
         });
       });
+
+    // не нашел адекватного пути вешать обработку клавиши Escape :(
+    // если вешать onKeyDown на .gallery-modal - Escape не срабатывает, т.к. фокус уходит на body
+    // и приходится минимум 1 раз нажать tab для фокусировки внутри модалки
+    document.body.addEventListener('keydown', this.keyDownModal);
   }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('keydown', this.keyDownModal);
+  }
+
+  keyDownModal = ({ key }) => {
+    key === 'Escape' && this.props.closeModal();
+  };
 
   validateForm() {
     const { name, text } = this.state;
@@ -83,6 +98,8 @@ export default class GalleryModal extends React.Component {
           comments: comments.concat(newComment),
         });
       });
+
+    this.buttonRef.current.blur();
   };
 
   changeInput = (evt) => {
@@ -130,7 +147,6 @@ export default class GalleryModal extends React.Component {
 
     return (
       <>
-        <button className="gallery-modal__close" onClick={closeModal}/>
         <div className="gallery-modal__image-container">
           <img className="gallery-modal__image" src={url} alt="" />
         </div>
@@ -152,7 +168,8 @@ export default class GalleryModal extends React.Component {
               errorText="Введите комментарий"
               isValid={textIsValid} />
           </div>
-          <button className="gallery-modal__button">Оставить комментарий</button>
+          <button className="gallery-modal__button" ref={this.buttonRef}>Оставить комментарий</button>
+        <button className="gallery-modal__close" onClick={closeModal}/>
         </form>
       </>
     );
@@ -163,12 +180,14 @@ export default class GalleryModal extends React.Component {
     const modalContent = this.renderModalContent();
 
     return (
-      <div className="gallery-modal">
-        <div className="gallery-modal__paranja" onClick={closeModal}/>
-        <div className="gallery-modal__content">
-          { modalContent }
+      <FocusLock>
+        <div className="gallery-modal">
+          <div className="gallery-modal__paranja" onClick={closeModal}/>
+          <div className="gallery-modal__content">
+            { modalContent }
+          </div>
         </div>
-      </div>
+      </FocusLock>
     );
   }
 }

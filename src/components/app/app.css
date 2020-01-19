@@ -4,16 +4,17 @@
 
   box-sizing: border-box;
   width: 100%;
+  min-width: 320px;
   max-width: 768px;
   height: 100%;
   margin: 0 auto;
-  padding: 15px 20px;
+  padding: 0 20px;
 }
 
 .app__header {
   flex: 0 0 auto;
 
-  margin-bottom: 30px;
+  padding: 12px 0 28px;
 
   text-align: center;
 }
@@ -31,11 +32,13 @@
 .app__main {
   flex: 1 0 auto;
 
-  margin-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .app__footer {
   flex: 0 0 auto;
+
+  padding: 20px 0;
 
   text-align: center;
 
@@ -44,8 +47,6 @@
 
 .app__copyright {
   display: block;
-
-  margin-top: 21px;
 
   color: #ccc;
 

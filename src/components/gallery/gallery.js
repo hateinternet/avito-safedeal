@@ -7,6 +7,7 @@ import GalleryModal from '../gallery-modal';
 import './gallery.css';
 
 export default class Gallery extends React.Component {
+
   galleryService = new GalleryService();
 
   state = {
@@ -32,15 +33,27 @@ export default class Gallery extends React.Component {
   openModal = (id) => {
     document.body.classList.add('scroll-hidden');
     this.setState({ modalOpened: true, modalIdx: id });
-  }
+  };
 
   closeModal = () => {
     document.body.classList.remove('scroll-hidden');
     this.setState({ modalOpened: false, modalIdx: null });
-  }
+  };
+
+  keyDownGallery = (evt, id) => {
+    if (evt.key === 'Enter') {
+      this.openModal(id);
+      evt.target.blur();
+    }
+  };
 
   renderImages = () => this.state.images.map(({ id, url }) => (
-    <div key={id} className="gallery-item" onClick={() => this.openModal(id)}>
+    <div
+      key={id}
+      className="gallery-item"
+      onClick={() => this.openModal(id)}
+      onKeyDown={(evt) => this.keyDownGallery(evt, id)}
+      tabIndex="0">
       <img src={url} className="gallery-item__img" alt="" />
     </div>
   ));
