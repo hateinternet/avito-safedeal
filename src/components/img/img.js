@@ -13,9 +13,9 @@ export default class Img extends React.Component {
   loadImage = (url) => {
     return new Promise((resolve, reject) => {
       const image = new Image();
-      image.src = url;
       image.onload = resolve;
       image.onerror = reject;
+      image.src = url;
     });
   };
 
@@ -35,11 +35,19 @@ export default class Img extends React.Component {
     const { source, error } = this.state;
 
     if (error) {
-      return <img src={imgError} className="img" alt="" />;
+      return (
+        <div className="img">
+          <img className="img_loader" alt="" src={imgError} />
+        </div>
+      );
     }
 
     if (!source) {
-      return <img src={imgLoading} className="img" alt=""/>;
+      return (
+        <div className="img">
+          <img className="img_loader" alt="" src={imgLoading} />
+        </div>
+      );
     }
 
     return <img src={source} className={className} alt={alt} />;
