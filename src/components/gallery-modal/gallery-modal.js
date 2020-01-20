@@ -21,6 +21,7 @@ export default class GalleryModal extends React.Component {
     text: '',
     nameIsValid: true,
     textIsValid: true,
+    submitBlocked: false,
   };
 
   componentDidMount() {
@@ -56,8 +57,8 @@ export default class GalleryModal extends React.Component {
 
   validateForm() {
     const { name, text } = this.state;
-    const nameIsEmpty = name.length === 0;
-    const textIsEmpty = text.length === 0;
+    const nameIsEmpty = name.trim().length === 0;
+    const textIsEmpty = text.trim().length === 0;
 
     this.setState({
       nameIsValid: !nameIsEmpty,
@@ -79,7 +80,13 @@ export default class GalleryModal extends React.Component {
       return ;
     }
 
+    const { submitBlocked } = this.state;
+    if (submitBlocked) {
+      return ;
+    }
+
     const { text, name } = this.state;
+    this.setState({ submitBlocked: true });
     this.galleryService
       .postComment(this.props.modalIdx, {name, comment: text})
       .then(() => {
@@ -96,6 +103,7 @@ export default class GalleryModal extends React.Component {
           nameIsValid: true,
           textIsValid: true,
           comments: comments.concat(newComment),
+          submitBlocked: false,
         });
       });
 
