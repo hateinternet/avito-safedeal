@@ -94,6 +94,7 @@
 }
 
 .gallery-modal__image-container {
+  position: relative;
   display: flex;
   overflow: hidden;
   align-items: center;
