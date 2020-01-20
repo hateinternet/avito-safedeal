@@ -2,6 +2,7 @@ import React from 'react';
 import FocusLock from "react-focus-lock";
 
 import GalleryService from '../../service';
+import Img from '../img';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 import Input from '../input';
@@ -156,7 +157,7 @@ export default class GalleryModal extends React.Component {
     return (
       <>
         <div className="gallery-modal__image-container">
-          <img className="gallery-modal__image" src={url} alt="" />
+          <Img src={url} className="gallery-modal__image" alt="" />
         </div>
         <div className="gallery-modal__comments">{comments}</div>
         <form className="gallery-modal__form" onSubmit={this.submitForm}>

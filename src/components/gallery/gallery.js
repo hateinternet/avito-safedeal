@@ -3,6 +3,7 @@ import React from 'react';
 import GalleryService from '../../service';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
+import Img from '../img';
 import GalleryModal from '../gallery-modal';
 import './gallery.css';
 
@@ -54,7 +55,7 @@ export default class Gallery extends React.Component {
       onClick={() => this.openModal(id)}
       onKeyDown={(evt) => this.keyDownGallery(evt, id)}
       tabIndex="0">
-      <img src={url} className="gallery-item__img" alt="" />
+      <Img src={url} className="gallery-item__img" alt="" />
     </div>
   ));
 
