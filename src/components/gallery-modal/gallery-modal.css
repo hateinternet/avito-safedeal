@@ -189,11 +189,17 @@
   background-color: #ccc;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 640px), (max-height: 450px) {
+  .gallery-modal {
+    display: block;
+    overflow: auto;
+  }
+
   .gallery-modal__content {
     width: 100%;
     max-width: 100%;
-    height: 100%;
+    height: auto;
+    min-height: 100%;
     padding: 0;
 
     grid-template-areas:
@@ -201,13 +207,13 @@
       'comments'
       'form';
     grid-template-columns: auto;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 255px minmax(150px, 1fr) auto;
     grid-column-gap: normal;
   }
 
   .gallery-modal__image-container {
-    height: 255px;
     margin-bottom: 0;
+    height: auto;
   }
 
   .gallery-modal__comments {
@@ -224,8 +230,8 @@
 }
 
 @media (max-width: 480px) {
-  .gallery-modal__image-container {
-    height: 205px;
+  .gallery-modal__content {
+    grid-template-rows: 205px minmax(150px, 1fr) auto;
   }
 
   .gallery-modal__close:hover::before,
