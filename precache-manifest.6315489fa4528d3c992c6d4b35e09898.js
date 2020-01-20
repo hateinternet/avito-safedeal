@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "91cce9aa253ee427ba6e94e8154e241d",
+    "revision": "7145d0829edc0a54cc7bf19a61b5345b",
     "url": "/avito-safedeal/index.html"
   },
   {
-    "revision": "973b2cd6955f5c55ec76",
-    "url": "/avito-safedeal/static/css/main.865c6c2d.chunk.css"
+    "revision": "4fe8bacd1f6ae3abe250",
+    "url": "/avito-safedeal/static/css/main.42a585cb.chunk.css"
   },
   {
     "revision": "b8840e56cafdd6a1cc82",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/avito-safedeal/static/js/2.f0563ddc.chunk.js.LICENSE"
   },
   {
-    "revision": "973b2cd6955f5c55ec76",
-    "url": "/avito-safedeal/static/js/main.fb0a7bec.chunk.js"
+    "revision": "4fe8bacd1f6ae3abe250",
+    "url": "/avito-safedeal/static/js/main.2508c1e4.chunk.js"
   },
   {
     "revision": "85e3131b964126f9152a",
@@ -40,7 +40,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/avito-safedeal/static/media/error.887a5f02.svg"
   },
   {
-    "revision": "8536410689f234535180888f4c0ca1cf",
-    "url": "/avito-safedeal/static/media/loading.85364106.svg"
+    "revision": "c0e8406b3b6df45a1144eb744cc00b88",
+    "url": "/avito-safedeal/static/media/loading.c0e8406b.svg"
   }
 ]);
