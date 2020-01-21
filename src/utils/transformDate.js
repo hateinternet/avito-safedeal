@@ -1,4 +1,5 @@
 export default (timestamp) => {
-  const date = new Date(timestamp);
-  return date.toLocaleDateString();
+  return new Date(timestamp).toISOString()
+    .replace(/^([^T]+)T(.+)$/,'$1')
+    .replace(/^(\d+)-(\d+)-(\d+)$/,'$3.$2.$1')
 };

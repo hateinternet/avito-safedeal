@@ -86,14 +86,16 @@ export default class GalleryModal extends React.Component {
       return ;
     }
 
-    const { text, name } = this.state;
+    const text = this.state.text.trim();
+    const name = this.state.name.trim();
     this.setState({ submitBlocked: true });
     this.galleryService
-      .postComment(this.props.modalIdx, {name, comment: text})
+      .postComment(this.props.modalIdx, { name, comment: text })
       .then(() => {
         const { comments } = this.state;
         const newComment = {
           text,
+          name,
           id: generateId(),
           date: Date.now(),
         };
@@ -129,10 +131,13 @@ export default class GalleryModal extends React.Component {
     }
 
     const renderedComments = comments.map(comment => {
-      const { id, date, text } = comment;
+      const { id, date, text, name } = comment;
       return (
         <div key={id} className="gallery-modal__comment">
-          <time className="gallery-modal__comment-date">{transformDate(date)}</time>
+          <div className="gallery-modal__comment-info">
+            <time className="gallery-modal__comment-date">{transformDate(date)}</time>
+            <span className="gallery-modal__comment-user">{name || 'User'}</span>
+          </div>
           <p className="gallery-modal__comment-text">{text}</p>
         </div>
       );

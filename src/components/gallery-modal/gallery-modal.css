@@ -139,12 +139,19 @@
   font-size: 13px;
 }
 
-.gallery-modal__comment-date {
-  display: block;
-
+.gallery-modal__comment-info {
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin-bottom: 5px;
+}
 
+.gallery-modal__comment-date {
   color: #999;
+}
+
+.gallery-modal__comment-user {
+  margin-left: 5px;
+  font-style: italic;
 }
 
 .gallery-modal__comment-text {
