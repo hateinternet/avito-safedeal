@@ -1,5 +1,6 @@
 import React from 'react';
 import FocusLock from "react-focus-lock";
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import GalleryService from '../../service';
 import Img from '../img';
@@ -11,6 +12,7 @@ import './gallery-modal.css';
 
 export default class GalleryModal extends React.Component {
   galleryService = new GalleryService();
+  modalRef = React.createRef();
   buttonRef = React.createRef();
 
   state = {
@@ -42,13 +44,12 @@ export default class GalleryModal extends React.Component {
         });
       });
 
-    // не нашел адекватного пути вешать обработку клавиши Escape :(
-    // если вешать onKeyDown на .gallery-modal - Escape не срабатывает, т.к. фокус уходит на body
-    // и приходится минимум 1 раз нажать tab для фокусировки внутри модалки
+    disableBodyScroll(this.modalRef.current);
     document.body.addEventListener('keydown', this.keyDownModal);
   }
 
   componentWillUnmount() {
+    enableBodyScroll(this.modalRef.current);
     document.body.removeEventListener('keydown', this.keyDownModal);
   }
 
@@ -195,7 +196,7 @@ export default class GalleryModal extends React.Component {
 
     return (
       <FocusLock>
-        <div className="gallery-modal">
+        <div className="gallery-modal" ref={this.modalRef}>
           <div className="gallery-modal__paranja" onClick={closeModal}/>
           <div className="gallery-modal__content">
             { modalContent }

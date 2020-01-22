@@ -11,10 +11,9 @@ body {
 }
 
 a,
+img,
 input,
 button {
-  outline: none !important;
-
   -webkit-tap-highlight-color: transparent;
 }
 

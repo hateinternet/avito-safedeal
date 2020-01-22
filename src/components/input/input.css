@@ -29,6 +29,7 @@
 
   border: 1px solid #ccc;
   border-radius: 3px;
+  outline: none;
 }
 
 .input__placeholder {
@@ -74,10 +75,5 @@
 @media (max-width: 480px) {
   .input_error {
     animation: none;
-  }
-
-  .input_filled .input__placeholder,
-  .input__field:focus + .input__placeholder {
-    display: none;
   }
 }

@@ -85,16 +85,20 @@
   transform: rotate(-45deg);
 }
 
+.gallery-modal__close:focus {
+  outline: 2px solid #4997D0;
+}
+
 .gallery-modal__close:hover::before,
 .gallery-modal__close:hover::after,
 .gallery-modal__close:focus::before,
 .gallery-modal__close:focus::after {
-  outline: none;
   background-color: #f00;
 }
 
 .gallery-modal__image-container {
   position: relative;
+
   display: flex;
   overflow: hidden;
   align-items: center;
@@ -141,8 +145,10 @@
 
 .gallery-modal__comment-info {
   overflow: hidden;
-  text-overflow: ellipsis;
+
   margin-bottom: 5px;
+
+  text-overflow: ellipsis;
 }
 
 .gallery-modal__comment-date {
@@ -151,6 +157,7 @@
 
 .gallery-modal__comment-user {
   margin-left: 5px;
+
   font-style: italic;
 }
 
@@ -181,11 +188,13 @@
   color: #fff;
   border: none;
   border-radius: 3px;
+  outline: none;
   background-color: #4997D0;
 }
 
 .gallery-modal__button:hover,
 .gallery-modal__button:focus {
+  outline: none;
   background-color: #32CD32;
 }
 
@@ -220,8 +229,8 @@
   }
 
   .gallery-modal__image-container {
-    margin-bottom: 0;
     height: auto;
+    margin-bottom: 0;
   }
 
   .gallery-modal__comments {

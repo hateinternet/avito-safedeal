@@ -21,7 +21,7 @@ export default class Img extends React.Component {
 
   componentDidMount() {
     const { src } = this.props;
-    this.loadImage(this.props.src)
+    this.loadImage(src)
       .then(() => {
         this.setState({ source: src });
       })

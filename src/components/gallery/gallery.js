@@ -32,31 +32,27 @@ export default class Gallery extends React.Component {
   }
 
   openModal = (id) => {
-    document.body.classList.add('scroll-hidden');
     this.setState({ modalOpened: true, modalIdx: id });
   };
 
   closeModal = () => {
-    document.body.classList.remove('scroll-hidden');
     this.setState({ modalOpened: false, modalIdx: null });
   };
 
   keyDownGallery = (evt, id) => {
     if (evt.key === 'Enter') {
       this.openModal(id);
-      evt.target.blur();
     }
   };
 
   renderImages = () => this.state.images.map(({ id, url }) => (
-    <div
+    <button
       key={id}
       className="gallery-item"
       onClick={() => this.openModal(id)}
-      onKeyDown={(evt) => this.keyDownGallery(evt, id)}
-      tabIndex="0">
+      onKeyDown={(evt) => this.keyDownGallery(evt, id)}>
       <Img src={url} className="gallery-item__img" alt="" />
-    </div>
+    </button>
   ));
 
   renderModal = () => {
