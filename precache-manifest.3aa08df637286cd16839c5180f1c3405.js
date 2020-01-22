@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "54ad739d3b28f02a7442ab155270b73b",
+    "revision": "892fb4cbf361e8673ab42e2fbad226f9",
     "url": "/avito-safedeal/index.html"
   },
   {
-    "revision": "9e59e19d22adf029cb65",
-    "url": "/avito-safedeal/static/css/main.8987ea0c.chunk.css"
+    "revision": "bc85f17da9dfbb10810b",
+    "url": "/avito-safedeal/static/css/main.01094cdd.chunk.css"
   },
   {
-    "revision": "b8840e56cafdd6a1cc82",
-    "url": "/avito-safedeal/static/js/2.f0563ddc.chunk.js"
+    "revision": "a894d061ef620e63550c",
+    "url": "/avito-safedeal/static/js/2.07f98b99.chunk.js"
   },
   {
     "revision": "8a14dcea7ad8b593c1e83c11f7ba1a89",
-    "url": "/avito-safedeal/static/js/2.f0563ddc.chunk.js.LICENSE"
+    "url": "/avito-safedeal/static/js/2.07f98b99.chunk.js.LICENSE"
   },
   {
-    "revision": "9e59e19d22adf029cb65",
-    "url": "/avito-safedeal/static/js/main.dd2171d4.chunk.js"
+    "revision": "bc85f17da9dfbb10810b",
+    "url": "/avito-safedeal/static/js/main.9e64c303.chunk.js"
   },
   {
     "revision": "85e3131b964126f9152a",
